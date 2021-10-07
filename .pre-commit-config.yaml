@@ -1,0 +1,29 @@
+repos:
+- repo: local
+  hooks:
+  - id: pre-commit
+    name: tests
+    entry: python
+    language: system
+    args: [pre-commit.py]
+ 
+  - id: pre-push
+    name: Tests before push
+    entry: python
+    language: system
+    stages: [push]
+    args: [pre-push-commit.py]
+ 
+  - id: post-commit
+    name: tests before post
+    entry: python
+    language: system
+    stages: [post-commit]
+    args: [post-commit.py]
+ 
+  - id: commit-msg
+    name: tests before commit msg
+    entry: python
+    language: system
+    stages: [commit-msg]
+    args: [commit-msg.py]
